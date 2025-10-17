@@ -1,0 +1,1 @@
+nombre_aplicacion = "red social " 
