@@ -1,1 +1,1 @@
-nombre_aplicacion = "red social " 
+nombre_aplicacion = "red social"
