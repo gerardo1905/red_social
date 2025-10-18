@@ -14,7 +14,7 @@ class Publicacion:
         cursor.execute(sql, (self.contenido, self.id_autor, self.tipo, datetime.now()))
         conexion.commit()
         conexion.close()
-        print("✅ Publicación creada correctamente.")
+        print("✅ Publicación Creada con Exito.")
 
     @staticmethod
     def listar_publicaciones():
