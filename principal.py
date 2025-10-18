@@ -3,6 +3,21 @@ import traceback
 def alguna_funcion():
     print("Función definida en principal ejecutada")
 
+def registrar_usuario_cb(nombre, correo, password):
+    try:
+        u = Usuario(nombre, correo, password)
+        if hasattr(u, "registrar"):
+            u.registrar()
+            print("Usuario registrado desde callback.")
+        elif hasattr(Usuario, "registrar"):
+            Usuario.registrar(u)
+            print("Usuario registrado (método en la clase).")
+        else:
+            print("No existe método 'registrar' en Usuario.")
+    except Exception as e:
+        print("Error al registrar usuario:", e)
+        traceback.print_exc()
+
 try:
     from iu.menu_principal import mostrar_menu
 except Exception:
