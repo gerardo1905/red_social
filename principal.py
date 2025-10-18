@@ -1,4 +1,5 @@
 import traceback
+from negocio.usuario import Usuario
 
 def alguna_funcion():
     print("Función definida en principal ejecutada")
@@ -28,8 +29,8 @@ except Exception:
 if __name__ == "__main__":
     try:
         actions = {
+            "registrar_usuario": registrar_usuario_cb,
             "opcion1": alguna_funcion,
-            # "opcion2": otra_funcion,  # añade más callbacks si hace falta
         }
         mostrar_menu(actions)
     except Exception:
