@@ -1,5 +1,6 @@
 import traceback
 from negocio.usuario import Usuario
+from negocio.like import guardar_like
 
 def alguna_funcion():
     print("Función definida en principal ejecutada")
@@ -33,6 +34,7 @@ if __name__ == "__main__":
             "opcion1": alguna_funcion,
         }
         mostrar_menu(actions)
+        print(guardar_like(1, 1))
     except Exception:
         print("Error al ejecutar mostrar_menu():")
         traceback.print_exc()
