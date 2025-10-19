@@ -8,7 +8,7 @@ def mostrar_menu(actions=None):
     """Mostrar menú e invocar callbacks opcionales pasados en `actions`."""
     while True:
         print("\n===============================")
-        print(f"     🌐 {nombre_aplicacion.upper()}      ")
+        print(f"      {nombre_aplicacion.upper()}      ")
         print("===============================")
         print("1. Registrar usuario")
         print("2. Ver usuarios registrados")
@@ -20,7 +20,7 @@ def mostrar_menu(actions=None):
         print("0. Salir")
         print("===============================\n")
 
-        opcion = input("👉 Elige una opción: ").strip()
+        opcion = input(" Elige una opción: ").strip()
 
         if opcion == "0":
             print("Saliendo...")
@@ -50,7 +50,7 @@ def mostrar_menu(actions=None):
                 except Exception as e:
                     print("Error al listar usuarios:", e)
                     usuarios = []
-            print("\n👥 Usuarios registrados:")
+            print("\n Usuarios registrados:")
             for u in usuarios:
                 try:
                     print(f"ID: {u['id']} | Nombre: {u['nombre']} | Correo: {u['correo']} | Fecha: {u.get('fecha_registro','')}")
@@ -92,7 +92,7 @@ def mostrar_menu(actions=None):
                 except Exception as e:
                     print("Error al listar publicaciones:", e)
                     publicaciones = []
-            print("\n📝 Publicaciones:")
+            print("\n Publicaciones:")
             for p in publicaciones:
                 print(p)
 
@@ -121,17 +121,21 @@ def mostrar_menu(actions=None):
             except ValueError:
                 print("ID inválido.")
                 continue
+            
             if actions and callable(actions.get("enviar_amistad")):
                 actions["enviar_amistad"](id_origen, id_destino)
             else:
                 try:
                     a = Amistad(id_origen, id_destino)
-                    if hasattr(a, "enviar_solicitud"):
-                        a.enviar_solicitud()
-                    elif hasattr(a, "solicitar"):
-                        a.solicitar()
+                    
+                    # CORRECCIÓN: Llama directamente al método 'guardar()'
+                    # que es el que registra la amistad en la base de datos.
+                    if hasattr(a, "guardar"):
+                        a.guardar()
                     else:
-                        print("Método para enviar solicitud no encontrado en Amistad.")
+                        # Si no tiene .guardar(), usa la lógica original para notificar.
+                        # (Aunque tu clase Amistad sí debe tener .guardar() después de las correcciones)
+                        print("Método 'guardar' no encontrado en Amistad.")
                 except Exception as e:
                     print("Error al enviar amistad:", e)
 
@@ -145,7 +149,7 @@ def mostrar_menu(actions=None):
                 except Exception as e:
                     print("Error al listar amistades:", e)
                     amistades = []
-            print("\n🤝 Amistades:")
+            print("\n Amistades:")
             for a in amistades:
                 print(a)
 

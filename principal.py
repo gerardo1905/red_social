@@ -1,6 +1,8 @@
 import traceback
 from negocio.usuario import Usuario
 from negocio.like import guardar_like
+from negocio.amistad import Amistad
+
 
 def alguna_funcion():
     print("Función definida en principal ejecutada")

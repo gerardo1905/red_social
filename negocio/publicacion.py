@@ -17,7 +17,7 @@ class Publicacion:
             conexion.commit()
             cursor.close()
             conexion.close()
-            print("✅ Publicación creada con éxito.")
+            print(" Publicación creada con éxito.")
         except Exception as e:
             print("Error al guardar publicación:", repr(e))
             raise
