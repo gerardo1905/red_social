@@ -1,13 +1,3 @@
-from datos.conexion import obtener_conexion
+from auxiliares.version import numero_version
 
-
-if __name__ == "__main__":
-    try:
-        c = obtener_conexion()
-        print("Conexión MySQL exitosa")
-        c.close()
-    except Exception as e:
-        print("Fallo al conectar:", e)
-        
-        
-
+print(numero_version)

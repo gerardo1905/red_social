@@ -4,11 +4,14 @@ from negocio.usuario import Usuario
 from negocio.publicacion import Publicacion
 from negocio.like import Like
 from negocio.amistad import Amistad
+from auxiliares.version import numero_version
 
 
 def mostrar_menu(actions=None):
     # Inicio de sesión básico
     try:
+        print(f"Bienvenido a {nombre_aplicacion} (v{numero_version})"
+        )
         id_usuario_actual = int(input("Ingresa tu ID de usuario para iniciar sesión: "))
         iniciar_sesion(id_usuario_actual)
     except ValueError:
@@ -29,7 +32,7 @@ def mostrar_menu(actions=None):
     # Menú principal
     while True:
         print("\n===============================")
-        print(f"      {nombre_aplicacion.upper()}      ")
+        print(f"      {nombre_aplicacion.upper()} ")
         print("===============================")
         print("1. Registrar usuario")
         print("2. Ver usuarios registrados")
